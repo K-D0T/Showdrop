@@ -340,11 +340,114 @@ a {
   text-underline-offset: 2px;
 }
 
-@media (max-width: 560px) {
-  .stats {
-    gap: 28px;
+/* ----------------------------------------------------------- responsive */
+@media (max-width: 700px) {
+  .wrap {
+    padding: 0 16px;
   }
+
+  .hero-inner {
+    padding: 18px 0 32px;
+  }
+
+  .hero h1 {
+    font-size: clamp(44px, 17vw, 76px);
+  }
+
+  .hero p.lede {
+    font-size: 15px;
+    margin-top: 18px;
+  }
+
+  .stats {
+    gap: 0;
+    justify-content: space-between;
+    margin-top: 28px;
+  }
+
+  .stat .n {
+    font-size: 24px;
+  }
+
+  /* SNKRS-style 2-up browse grid */
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px 12px;
+  }
+
+  .section-head {
+    margin: 28px 0 18px;
+  }
+
   .card-name {
-    min-height: 0;
+    font-size: 13.5px;
+    min-height: 36px;
+    margin-top: 8px;
+  }
+
+  .card-body {
+    padding: 12px 0 4px;
+  }
+
+  .card-brand {
+    margin-bottom: 4px;
+  }
+
+  .card-sub {
+    font-size: 12.5px;
+  }
+
+  .soon-badge {
+    top: 8px;
+    left: 8px;
+    font-size: 9px;
+    padding: 4px 7px;
+  }
+
+  /* Whole tile is tappable on mobile — drop the redundant button */
+  .cta {
+    display: none;
+  }
+
+  .card-foot {
+    margin-top: 8px;
+  }
+
+  .countdown {
+    font-size: 11px;
+  }
+
+  .toolbar-inner {
+    gap: 10px;
+  }
+
+  .filters {
+    gap: 4px;
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .chip {
+    padding: 7px 13px;
+    font-size: 13px;
+  }
+
+  .search {
+    max-width: none;
+    width: 100%;
+  }
+}
+
+@media (max-width: 380px) {
+  .card-name {
+    font-size: 12.5px;
+    min-height: 34px;
   }
 }

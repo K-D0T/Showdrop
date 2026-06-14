@@ -104,18 +104,20 @@ export default function DropsView({
             {filtered.map((d) => {
               const cd = countdown(d.releaseDate, now);
               return (
-                <article key={d.id} className="card">
-                  <a
-                    className="thumb"
-                    href={d.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={d.name}
-                  >
-                    {cd.soon && <span className="soon-badge">Dropping soon</span>}
+                <a
+                  key={d.id}
+                  className="card"
+                  href={d.link}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <div className="thumb">
+                    {cd.soon && (
+                      <span className="soon-badge">Dropping soon</span>
+                    )}
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={d.image} alt={d.name} loading="lazy" />
-                  </a>
+                  </div>
                   <div className="card-body">
                     <div className="card-brand">{d.brand}</div>
                     <div className="card-name">{d.name}</div>
@@ -127,17 +129,10 @@ export default function DropsView({
                       <span className={`countdown ${cd.soon ? "soon" : ""}`}>
                         {cd.label}
                       </span>
-                      <a
-                        className="cta"
-                        href={d.link}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        View
-                      </a>
+                      <span className="cta">View</span>
                     </div>
                   </div>
-                </article>
+                </a>
               );
             })}
           </div>
