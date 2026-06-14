@@ -14,19 +14,23 @@ export default function Home() {
   return (
     <>
       <header className="hero">
-        <div className="wrap hero-inner">
-          <div className="brand-mark">
-            <span className="brand-dot" />
-            Showdrop
+        <div className="wrap">
+          <div className="topbar">
+            <div className="logo">Showdrop</div>
+            <span className="eyebrow">Upcoming Drops</span>
           </div>
+        </div>
+        <div className="wrap hero-inner">
+          <span className="eyebrow">The drop calendar</span>
           <h1>
-            The next sneaker <span className="hl">drops</span>,
+            Coming
             <br />
-            before they sell out.
+            Soon.
           </h1>
           <p className="lede">
-            Upcoming releases from Jordan, Nike, adidas, and New Balance — with
-            drop dates, retail prices, images, and direct product links.
+            Upcoming releases from Jordan, Nike, adidas, and New Balance —
+            release dates, prices, and direct links. Get there before they sell
+            out.
           </p>
           <div className="stats">
             <div className="stat">

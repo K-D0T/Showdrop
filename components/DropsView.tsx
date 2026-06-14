@@ -3,13 +3,6 @@
 import { useEffect, useMemo, useState } from "react";
 import type { Brand, Drop } from "@/lib/drops";
 
-const BRAND_COLORS: Record<Brand, string> = {
-  Jordan: "var(--jordan)",
-  Nike: "var(--nike)",
-  adidas: "var(--adidas)",
-  "New Balance": "var(--new-balance)",
-};
-
 function formatDate(iso: string): string {
   return new Date(iso + "T00:00:00").toLocaleDateString("en-US", {
     weekday: "short",
@@ -112,41 +105,37 @@ export default function DropsView({
               const cd = countdown(d.releaseDate, now);
               return (
                 <article key={d.id} className="card">
-                  <div className="thumb">
-                    <div className="badges">
-                      <span
-                        className="brand-badge"
-                        style={{ color: BRAND_COLORS[d.brand] }}
-                      >
-                        {d.brand}
-                      </span>
-                      {cd.soon && <span className="soon-badge">Soon</span>}
-                    </div>
+                  <a
+                    className="thumb"
+                    href={d.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={d.name}
+                  >
+                    {cd.soon && <span className="soon-badge">Dropping soon</span>}
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={d.image} alt={d.name} loading="lazy" />
-                  </div>
+                  </a>
                   <div className="card-body">
+                    <div className="card-brand">{d.brand}</div>
                     <div className="card-name">{d.name}</div>
-                    <div className="meta-row">
-                      <div className="date">
-                        <span className="d">
-                          {formatDate(d.releaseDate)}
-                          {d.dateEstimated ? "*" : ""}
-                        </span>
-                        <span className={`c ${cd.soon ? "" : ""}`}>
-                          {cd.label}
-                        </span>
-                      </div>
-                      <div className="price">${d.price}</div>
+                    <div className="card-sub">
+                      {formatDate(d.releaseDate)}
+                      {d.dateEstimated ? "*" : ""} · ${d.price}
                     </div>
-                    <a
-                      className="cta"
-                      href={d.link}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      View product →
-                    </a>
+                    <div className="card-foot">
+                      <span className={`countdown ${cd.soon ? "soon" : ""}`}>
+                        {cd.label}
+                      </span>
+                      <a
+                        className="cta"
+                        href={d.link}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        View
+                      </a>
+                    </div>
                   </div>
                 </article>
               );
